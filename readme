@@ -1,0 +1,43 @@
+my-decentralized-identity-project/
+├── contracts/                       # Solidity smart contracts
+│   ├── DIDRegistry.sol              # Contract to register and store DIDs
+│   ├── SBT.sol                   	  # Soulbound Token contract (mint/update/revoke tokens)
+│   ├── FraudBlacklist.sol           # Contract for managing a blacklist of fraudulent DIDs
+│   └── Reputation.sol               # (Optional) Contract to manage reputation & work history
+│
+├── scripts/                         # Hardhat deployment and test scripts
+│   ├── deployDIDRegistry.js         # Script to deploy DIDRegistry.sol
+│   ├── deploySBT.js                 # Script to deploy SBT.sol
+│   ├── deployFraudBlacklist.js      # Script to deploy FraudBlacklist.sol
+│   └── deployReputation.js          # Script to deploy Reputation.sol
+│
+├── abis/                            # Compiled ABI JSON files (exported from Hardhat)
+│   ├── DIDRegistryABI.json          # ABI for DIDRegistry.sol
+│   ├── SBTAbi.json                  # ABI for SBT.sol
+│   ├── FraudBlacklistABI.json       # ABI for FraudBlacklist.sol
+│   └── ReputationABI.json           # ABI for Reputation.sol
+│
+├── frontend/                        # Next.js React frontend
+│   ├── package.json                 # Frontend dependencies and scripts
+│   ├── .env.local                   # Environment variables (RPC URL, contract addresses, private key, etc.)
+│   ├── tsconfig.json                # TypeScript configuration (if using TypeScript)
+│   ├── lib/                         # Helper libraries
+│   │   └── ethers.js                # Web3 integration helper (e.g., wallet connection using ethers.js and Web3Modal)
+│   ├── pages/                       # Next.js pages and API routes
+│   │   ├── index.js                 # Landing page
+│   │   ├── api/                     # API routes to interact with smart contracts
+│   │   │   ├── register-did.js      # API to register a DID (calls DIDRegistry)
+│   │   │   ├── mint-sbt.js          # API to mint a new SBT (calls SBT contract)
+│   │   │   ├── update-sbt.js        # API to update SBT metadata (calls SBT contract)
+│   │   │   ├── revoke-sbt.js        # API to revoke an SBT (calls SBT contract)
+│   │   │   ├── add-blacklist.js     # API to add a DID to the FraudBlacklist
+│   │   │   ├── is-blacklisted.js    # API to check if a DID is blacklisted
+│   │   │   ├── remove-blacklist.js  # API to remove a DID from the FraudBlacklist
+│   │   │   ├── update-reputation.js # API to update reputation data (calls Reputation contract)
+│   │   │   └── get-reputation.js    # API to retrieve reputation data (calls Reputation contract)
+│   │   └── _app.js                  # Custom App component (if needed for global styles/state)
+│   └── components/                  # React components for UI (forms, dashboards, etc.)
+│
+├── hardhat.config.js                # Hardhat configuration (networks, Solidity version, plugins)
+├── package.json                     # Root package.json for managing scripts/tools common to both contracts and backend
+└── tsconfig.json                    # (Optional) Global TypeScript configuration
